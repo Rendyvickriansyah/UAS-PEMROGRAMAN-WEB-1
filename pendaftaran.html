@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pendaftaran</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="formpendaftaran">
+      <h2>Form Pendaftaran Kursus</h2>
+      <form class="form">
+        <!-- Kolom Nik -->
+        <label for="nik">NIK</label>
+        <input type="text" id="#nik" name="nikField" placeholder="Masukan NIK anda" />
+
+        <!-- Kolom Nama -->
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" id="#namalengkap" name="namaField" placeholder="Masukan nama lengkap anda" />
+
+        <!-- Gender -->
+        <label for="gender" id="gender">Jenis Kelamin</label>
+        <label for="pria">Laki - Laki</label>
+        <input type="radio" id="pria" value="Laki-Laki" name="gender" />
+
+        <!-- Wanita  -->
+        <label for="wanita">Wanita</label>
+        <input type="radio" id="wanita" value="Wanita" name="gender" />
+
+        <!-- NO HP -->
+        <label for="nomorhp">Nomor Telepon</label>
+        <input type="text" id="nomorhp" name="nomorField" placeholder="Masukan nomor telepon anda" />
+
+        <!-- Alamat -->
+        <label for="alamat">Alamat</label>
+        <input type="text" id="alamat" name="alamatField" placeholder="Masukan alamat anda" />
+
+        <!-- Pilihan bahasa pemrograman -->
+        <label for="bahasa">Pilihan bahasa pemrograman yang diminati</label>
+        <select id="Bahasa" name="bahasaField">
+          <option value="">-- Pilih bahasa pemrograman --</option>
+          <option value="HTML, CSS, JS">HTML, CSS, JS</option>
+          <option value="PYTHON">PYTHON</option>
+        </select>
+
+        <input type="submit" value="Daftar" name="submit" class="button-daftar" />
+      </form>
+    </div>
+
+    <script>
+      const container = document.querySelector(".formpendaftaran"),
+        form = container.querySelectorAll(".form"),
+        submitInput = form[0].querySelector('input[type="submit"]');
+
+      function getDataForm(e) {
+        e.preventDefault();
+
+        let formData = new FormData(form[0]);
+
+        if (confirm("Apakah Anda Sudah Yakin Untuk Menyimpan?")) {
+          alert(
+            "NIK: " +
+              formData.get("nikField") +
+              " Nama: " +
+              formData.get("namaField") +
+              " Jenis Kelamin: " +
+              formData.get("gender") +
+              " Nomor: " +
+              formData.get("nomorField") +
+              " Alamat: " +
+              formData.get("alamatField") +
+              " Bahasa: " +
+              formData.get("bahasaField")
+          );
+        } else {
+        }
+      }
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+          submitInput.addEventListener("click", getDataForm, false);
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
